@@ -4,11 +4,11 @@ const data = {
             "root": 9,
             "video_index": 1,
             "adjacent_scales": [
-                "d_diatonic",
                 "e_diatonic",
-                "b_harmonic_major",
                 "e_harmonic_minor",
                 "octatonic_1",
+                "d_diatonic",
+                "b_harmonic_major",
                 "whole_tone_2"
             ],
             "pitch_classes": [
@@ -27,12 +27,12 @@ const data = {
             "root": 9,
             "video_index": 2,
             "adjacent_scales": [
-                "d_diatonic",
                 "e_diatonic",
+                "fs_harmonic_minor",
                 "d_acoustic",
-                "e_acoustic",
+                "d_diatonic",
                 "a_harmonic_major",
-                "fs_harmonic_minor"
+                "e_acoustic"
             ],
             "pitch_classes": [
                 1,
@@ -51,10 +51,10 @@ const data = {
             "video_index": 3,
             "adjacent_scales": [
                 "a_diatonic",
-                "g_acoustic",
                 "fs_harmonic_minor",
-                "a_harmonic_minor",
+                "g_acoustic",
                 "octatonic_2",
+                "a_harmonic_minor",
                 "hexatonic_1"
             ],
             "pitch_classes": [
@@ -74,10 +74,10 @@ const data = {
             "video_index": 4,
             "adjacent_scales": [
                 "c_diatonic",
-                "d_acoustic",
-                "c_harmonic_major",
                 "a_harmonic_major",
+                "d_acoustic",
                 "octatonic_3",
+                "c_harmonic_major",
                 "hexatonic_1"
             ],
             "pitch_classes": [
@@ -96,11 +96,11 @@ const data = {
             "root": 10,
             "video_index": 5,
             "adjacent_scales": [
-                "ds_diatonic",
                 "f_diatonic",
-                "c_harmonic_major",
                 "f_harmonic_minor",
                 "octatonic_2",
+                "ds_diatonic",
+                "c_harmonic_major",
                 "whole_tone_1"
             ],
             "pitch_classes": [
@@ -119,12 +119,12 @@ const data = {
             "root": 10,
             "video_index": 6,
             "adjacent_scales": [
-                "ds_diatonic",
                 "f_diatonic",
+                "g_harmonic_minor",
                 "ds_acoustic",
-                "f_acoustic",
+                "ds_diatonic",
                 "as_harmonic_major",
-                "g_harmonic_minor"
+                "f_acoustic",
             ],
             "pitch_classes": [
                 0,
@@ -143,10 +143,10 @@ const data = {
             "video_index": 7,
             "adjacent_scales": [
                 "as_diatonic",
-                "gs_acoustic",
                 "g_harmonic_minor",
-                "as_harmonic_minor",
+                "gs_acoustic",
                 "octatonic_3",
+                "as_harmonic_minor",
                 "hexatonic_2"
             ],
             "pitch_classes": [
@@ -166,10 +166,10 @@ const data = {
             "video_index": 8,
             "adjacent_scales": [
                 "cs_diatonic",
-                "ds_acoustic",
-                "cs_harmonic_major",
                 "as_harmonic_major",
+                "ds_acoustic",
                 "octatonic_1",
+                "cs_harmonic_major",
                 "hexatonic_2"
             ],
             "pitch_classes": [
@@ -188,11 +188,11 @@ const data = {
             "root": 11,
             "video_index": 9,
             "adjacent_scales": [
-                "e_diatonic",
                 "fs_diatonic",
-                "cs_harmonic_major",
                 "fs_harmonic_minor",
                 "octatonic_3",
+                "e_diatonic",
+                "cs_harmonic_major",
                 "whole_tone_2"
             ],
             "pitch_classes": [
@@ -211,12 +211,12 @@ const data = {
             "root": 11,
             "video_index": 10,
             "adjacent_scales": [
-                "e_diatonic",
                 "fs_diatonic",
+                "gs_harmonic_minor",
                 "e_acoustic",
-                "fs_acoustic",
+                "e_diatonic",
                 "b_harmonic_major",
-                "gs_harmonic_minor"
+                "fs_acoustic"
             ],
             "pitch_classes": [
                 1,
@@ -235,10 +235,10 @@ const data = {
             "video_index": 11,
             "adjacent_scales": [
                 "b_diatonic",
-                "a_acoustic",
                 "gs_harmonic_minor",
-                "b_harmonic_minor",
+                "a_acoustic",
                 "octatonic_1",
+                "b_harmonic_minor",
                 "hexatonic_3"
             ],
             "pitch_classes": [
@@ -258,10 +258,10 @@ const data = {
             "video_index": 12,
             "adjacent_scales": [
                 "d_diatonic",
-                "e_acoustic",
-                "d_harmonic_major",
                 "b_harmonic_major",
+                "e_acoustic",
                 "octatonic_2",
+                "d_harmonic_major",
                 "hexatonic_3"
             ],
             "pitch_classes": [
@@ -280,11 +280,11 @@ const data = {
             "root": 0,
             "video_index": 13,
             "adjacent_scales": [
-                "f_diatonic",
                 "g_diatonic",
-                "d_harmonic_major",
                 "g_harmonic_minor",
                 "octatonic_1",
+                "f_diatonic",
+                "d_harmonic_major",
                 "whole_tone_1"
             ],
             "pitch_classes": [
@@ -303,12 +303,12 @@ const data = {
             "root": 0,
             "video_index": 14,
             "adjacent_scales": [
-                "f_diatonic",
                 "g_diatonic",
+                "a_harmonic_minor",
                 "f_acoustic",
-                "g_acoustic",
+                "f_diatonic",
                 "c_harmonic_major",
-                "a_harmonic_minor"
+                "g_acoustic"
             ],
             "pitch_classes": [
                 0,
@@ -327,10 +327,10 @@ const data = {
             "video_index": 15,
             "adjacent_scales": [
                 "c_diatonic",
-                "as_acoustic",
-                "c_harmonic_minor",
                 "a_harmonic_minor",
+                "as_acoustic",
                 "octatonic_2",
+                "c_harmonic_minor",
                 "hexatonic_4"
             ],
             "pitch_classes": [
@@ -350,10 +350,10 @@ const data = {
             "video_index": 16,
             "adjacent_scales": [
                 "ds_diatonic",
-                "f_acoustic",
                 "c_harmonic_major",
-                "ds_harmonic_major",
+                "f_acoustic",
                 "octatonic_3",
+                "ds_harmonic_major",
                 "hexatonic_4"
             ],
             "pitch_classes": [
@@ -372,11 +372,11 @@ const data = {
             "root": 1,
             "video_index": 17,
             "adjacent_scales": [
-                "fs_diatonic",
                 "gs_diatonic",
-                "ds_harmonic_major",
                 "gs_harmonic_minor",
                 "octatonic_2",
+                "fs_diatonic",
+                "ds_harmonic_major",
                 "whole_tone_2"
             ],
             "pitch_classes": [
@@ -395,12 +395,12 @@ const data = {
             "root": 1,
             "video_index": 18,
             "adjacent_scales": [
-                "fs_diatonic",
                 "gs_diatonic",
+                "as_harmonic_minor",
                 "fs_acoustic",
-                "gs_acoustic",
+                "fs_diatonic",
                 "cs_harmonic_major",
-                "as_harmonic_minor"
+                "gs_acoustic"
             ],
             "pitch_classes": [
                 0,
@@ -419,10 +419,10 @@ const data = {
             "video_index": 19,
             "adjacent_scales": [
                 "cs_diatonic",
-                "b_acoustic",
-                "cs_harmonic_minor",
                 "as_harmonic_minor",
+                "b_acoustic",
                 "octatonic_3",
+                "cs_harmonic_minor",
                 "hexatonic_1"
             ],
             "pitch_classes": [
@@ -442,10 +442,10 @@ const data = {
             "video_index": 20,
             "adjacent_scales": [
                 "e_diatonic",
-                "fs_acoustic",
                 "cs_harmonic_major",
-                "e_harmonic_major",
+                "fs_acoustic",
                 "octatonic_1",
+                "e_harmonic_major",
                 "hexatonic_1"
             ],
             "pitch_classes": [
@@ -464,11 +464,11 @@ const data = {
             "root": 2,
             "video_index": 21,
             "adjacent_scales": [
-                "g_diatonic",
                 "a_diatonic",
-                "e_harmonic_major",
                 "a_harmonic_minor",
                 "octatonic_3",
+                "g_diatonic",
+                "e_harmonic_major",
                 "whole_tone_1"
             ],
             "pitch_classes": [
@@ -487,12 +487,12 @@ const data = {
             "root": 2,
             "video_index": 22,
             "adjacent_scales": [
-                "g_diatonic",
                 "a_diatonic",
+                "b_harmonic_minor",
                 "g_acoustic",
-                "a_acoustic",
+                "g_diatonic",
                 "d_harmonic_major",
-                "b_harmonic_minor"
+                "a_acoustic"
             ],
             "pitch_classes": [
                 1,
@@ -511,10 +511,10 @@ const data = {
             "video_index": 23,
             "adjacent_scales": [
                 "d_diatonic",
-                "c_acoustic",
-                "d_harmonic_minor",
                 "b_harmonic_minor",
+                "c_acoustic",
                 "octatonic_1",
+                "d_harmonic_minor",
                 "hexatonic_2"
             ],
             "pitch_classes": [
@@ -534,10 +534,10 @@ const data = {
             "video_index": 24,
             "adjacent_scales": [
                 "f_diatonic",
-                "g_acoustic",
                 "d_harmonic_major",
-                "f_harmonic_major",
+                "g_acoustic",
                 "octatonic_2",
+                "f_harmonic_major",
                 "hexatonic_2"
             ],
             "pitch_classes": [
@@ -556,11 +556,11 @@ const data = {
             "root": 3,
             "video_index": 25,
             "adjacent_scales": [
-                "gs_diatonic",
                 "as_diatonic",
-                "f_harmonic_major",
                 "as_harmonic_minor",
                 "octatonic_1",
+                "gs_diatonic",
+                "f_harmonic_major",
                 "whole_tone_2"
             ],
             "pitch_classes": [
@@ -579,12 +579,12 @@ const data = {
             "root": 3,
             "video_index": 26,
             "adjacent_scales": [
-                "gs_diatonic",
                 "as_diatonic",
+                "c_harmonic_minor",
                 "gs_acoustic",
-                "as_acoustic",
+                "gs_diatonic",
                 "ds_harmonic_major",
-                "c_harmonic_minor"
+                "as_acoustic"
             ],
             "pitch_classes": [
                 0,
@@ -603,10 +603,10 @@ const data = {
             "video_index": 27,
             "adjacent_scales": [
                 "ds_diatonic",
-                "cs_acoustic",
                 "c_harmonic_minor",
-                "ds_harmonic_minor",
+                "cs_acoustic",
                 "octatonic_2",
+                "ds_harmonic_minor",
                 "hexatonic_3"
             ],
             "pitch_classes": [
@@ -626,10 +626,10 @@ const data = {
             "video_index": 28,
             "adjacent_scales": [
                 "fs_diatonic",
-                "gs_acoustic",
                 "ds_harmonic_major",
-                "fs_harmonic_major",
+                "gs_acoustic",
                 "octatonic_3",
+                "fs_harmonic_major",
                 "hexatonic_3"
             ],
             "pitch_classes": [
@@ -648,11 +648,11 @@ const data = {
             "root": 4,
             "video_index": 29,
             "adjacent_scales": [
-                "a_diatonic",
                 "b_diatonic",
-                "fs_harmonic_major",
                 "b_harmonic_minor",
                 "octatonic_2",
+                "a_diatonic",
+                "fs_harmonic_major",
                 "whole_tone_1"
             ],
             "pitch_classes": [
@@ -671,12 +671,12 @@ const data = {
             "root": 4,
             "video_index": 30,
             "adjacent_scales": [
-                "a_diatonic",
                 "b_diatonic",
+                "cs_harmonic_minor",
                 "a_acoustic",
-                "b_acoustic",
+                "a_diatonic",
                 "e_harmonic_major",
-                "cs_harmonic_minor"
+                "b_acoustic"
             ],
             "pitch_classes": [
                 1,
@@ -695,10 +695,10 @@ const data = {
             "video_index": 31,
             "adjacent_scales": [
                 "e_diatonic",
-                "d_acoustic",
                 "cs_harmonic_minor",
-                "e_harmonic_minor",
+                "d_acoustic",
                 "octatonic_3",
+                "e_harmonic_minor",
                 "hexatonic_4"
             ],
             "pitch_classes": [
@@ -718,10 +718,10 @@ const data = {
             "video_index": 32,
             "adjacent_scales": [
                 "g_diatonic",
-                "a_acoustic",
                 "e_harmonic_major",
-                "g_harmonic_major",
+                "a_acoustic",
                 "octatonic_1",
+                "g_harmonic_major",
                 "hexatonic_4"
             ],
             "pitch_classes": [
@@ -741,10 +741,10 @@ const data = {
             "video_index": 33,
             "adjacent_scales": [
                 "c_diatonic",
-                "as_diatonic",
-                "g_harmonic_major",
                 "c_harmonic_minor",
                 "octatonic_3",
+                "as_diatonic",
+                "g_harmonic_major",
                 "whole_tone_2"
             ],
             "pitch_classes": [
@@ -764,11 +764,11 @@ const data = {
             "video_index": 34,
             "adjacent_scales": [
                 "c_diatonic",
-                "as_diatonic",
-                "c_acoustic",
+                "d_harmonic_minor",
                 "as_acoustic",
+                "as_diatonic",
                 "f_harmonic_major",
-                "d_harmonic_minor"
+                "c_acoustic"
             ],
             "pitch_classes": [
                 0,
@@ -787,10 +787,10 @@ const data = {
             "video_index": 35,
             "adjacent_scales": [
                 "f_diatonic",
-                "ds_acoustic",
                 "d_harmonic_minor",
-                "f_harmonic_minor",
+                "ds_acoustic",
                 "octatonic_1",
+                "f_harmonic_minor",
                 "hexatonic_1"
             ],
             "pitch_classes": [
@@ -810,10 +810,10 @@ const data = {
             "video_index": 36,
             "adjacent_scales": [
                 "gs_diatonic",
-                "as_acoustic",
                 "f_harmonic_major",
-                "gs_harmonic_major",
+                "as_acoustic",
                 "octatonic_2",
+                "gs_harmonic_major",
                 "hexatonic_1"
             ],
             "pitch_classes": [
@@ -833,10 +833,10 @@ const data = {
             "video_index": 37,
             "adjacent_scales": [
                 "cs_diatonic",
-                "b_diatonic",
-                "gs_harmonic_major",
                 "cs_harmonic_minor",
                 "octatonic_1",
+                "b_diatonic",
+                "gs_harmonic_major",
                 "whole_tone_1"
             ],
             "pitch_classes": [
@@ -856,11 +856,11 @@ const data = {
             "video_index": 38,
             "adjacent_scales": [
                 "cs_diatonic",
-                "b_diatonic",
-                "cs_acoustic",
+                "ds_harmonic_minor",
                 "b_acoustic",
+                "b_diatonic",
                 "fs_harmonic_major",
-                "ds_harmonic_minor"
+                "cs_acoustic"
             ],
             "pitch_classes": [
                 1,
@@ -879,10 +879,10 @@ const data = {
             "video_index": 39,
             "adjacent_scales": [
                 "fs_diatonic",
-                "e_acoustic",
                 "ds_harmonic_minor",
-                "fs_harmonic_minor",
+                "e_acoustic",
                 "octatonic_2",
+                "fs_harmonic_minor",
                 "hexatonic_2"
             ],
             "pitch_classes": [
@@ -902,10 +902,10 @@ const data = {
             "video_index": 40,
             "adjacent_scales": [
                 "a_diatonic",
-                "b_acoustic",
                 "fs_harmonic_major",
-                "a_harmonic_major",
+                "b_acoustic",
                 "octatonic_3",
+                "a_harmonic_major",
                 "hexatonic_2"
             ],
             "pitch_classes": [
@@ -924,11 +924,11 @@ const data = {
             "root": 7,
             "video_index": 41,
             "adjacent_scales": [
-                "c_diatonic",
                 "d_diatonic",
-                "a_harmonic_major",
                 "d_harmonic_minor",
                 "octatonic_2",
+                "c_diatonic",
+                "a_harmonic_major",
                 "whole_tone_2"
             ],
             "pitch_classes": [
@@ -947,12 +947,12 @@ const data = {
             "root": 7,
             "video_index": 42,
             "adjacent_scales": [
-                "c_diatonic",
                 "d_diatonic",
+                "e_harmonic_minor",
                 "c_acoustic",
-                "d_acoustic",
+                "c_diatonic",
                 "g_harmonic_major",
-                "e_harmonic_minor"
+                "d_acoustic"
             ],
             "pitch_classes": [
                 0,
@@ -971,10 +971,10 @@ const data = {
             "video_index": 43,
             "adjacent_scales": [
                 "g_diatonic",
-                "f_acoustic",
                 "e_harmonic_minor",
-                "g_harmonic_minor",
+                "f_acoustic",
                 "octatonic_3",
+                "g_harmonic_minor",
                 "hexatonic_3"
             ],
             "pitch_classes": [
@@ -994,10 +994,10 @@ const data = {
             "video_index": 44,
             "adjacent_scales": [
                 "as_diatonic",
-                "c_acoustic",
                 "g_harmonic_major",
-                "as_harmonic_major",
+                "c_acoustic",
                 "octatonic_1",
+                "as_harmonic_major",
                 "hexatonic_3"
             ],
             "pitch_classes": [
@@ -1016,11 +1016,11 @@ const data = {
             "root": 8,
             "video_index": 45,
             "adjacent_scales": [
-                "cs_diatonic",
                 "ds_diatonic",
-                "as_harmonic_major",
                 "ds_harmonic_minor",
                 "octatonic_3",
+                "cs_diatonic",
+                "as_harmonic_major",
                 "whole_tone_1"
             ],
             "pitch_classes": [
@@ -1039,12 +1039,12 @@ const data = {
             "root": 8,
             "video_index": 46,
             "adjacent_scales": [
-                "cs_diatonic",
                 "ds_diatonic",
+                "f_harmonic_minor",
                 "cs_acoustic",
-                "ds_acoustic",
+                "cs_diatonic",
                 "gs_harmonic_major",
-                "f_harmonic_minor"
+                "ds_acoustic"
             ],
             "pitch_classes": [
                 0,
@@ -1063,10 +1063,10 @@ const data = {
             "video_index": 47,
             "adjacent_scales": [
                 "gs_diatonic",
-                "fs_acoustic",
                 "f_harmonic_minor",
-                "gs_harmonic_minor",
+                "fs_acoustic",
                 "octatonic_1",
+                "gs_harmonic_minor",
                 "hexatonic_4"
             ],
             "pitch_classes": [
@@ -1086,10 +1086,10 @@ const data = {
             "video_index": 48,
             "adjacent_scales": [
                 "b_diatonic",
-                "cs_acoustic",
                 "gs_harmonic_major",
-                "b_harmonic_major",
+                "cs_acoustic",
                 "octatonic_2",
+                "b_harmonic_major",
                 "hexatonic_4"
             ],
             "pitch_classes": [
@@ -1195,15 +1195,16 @@ const data = {
             "scale_class": "octatonic"
         },
         "hexatonic_1": {
-            "root": 0,
+            "root": 1,
             "video_index": 52,
             "adjacent_scales": [
+            "cs_harmonic_minor",
+                "f_harmonic_minor",
+                "a_harmonic_minor",
                 "cs_harmonic_major",
                 "f_harmonic_major",
-                "a_harmonic_major",
-                "cs_harmonic_minor",
-                "f_harmonic_minor",
-                "a_harmonic_minor"
+                "a_harmonic_major"
+                
             ],
             "pitch_classes": [
                 0,
@@ -1217,15 +1218,16 @@ const data = {
             "scale_class": "hexatonic"
         },
         "hexatonic_2": {
-            "root": 1,
+            "root": 2,
             "video_index": 53,
             "adjacent_scales": [
+            "d_harmonic_minor",
+                "fs_harmonic_minor",
+                "as_harmonic_minor",
                 "d_harmonic_major",
                 "fs_harmonic_major",
-                "as_harmonic_major",
-                "d_harmonic_minor",
-                "fs_harmonic_minor",
-                "as_harmonic_minor"
+                "as_harmonic_major"
+                
             ],
             "pitch_classes": [
                 1,
@@ -1239,15 +1241,16 @@ const data = {
             "scale_class": "hexatonic"
         },
         "hexatonic_3": {
-            "root": 2,
+            "root": 3,
             "video_index": 54,
             "adjacent_scales": [
-                "ds_harmonic_major",
-                "g_harmonic_major",
-                "b_harmonic_major",
+                
                 "ds_harmonic_minor",
                 "g_harmonic_minor",
-                "b_harmonic_minor"
+                "b_harmonic_minor",
+                "ds_harmonic_major",
+                "g_harmonic_major",
+                "b_harmonic_major"
             ],
             "pitch_classes": [
                 2,
@@ -1261,15 +1264,16 @@ const data = {
             "scale_class": "hexatonic"
         },
         "hexatonic_4": {
-            "root": 3,
+            "root": 4,
             "video_index": 55,
             "adjacent_scales": [
+            "c_harmonic_minor",
+                "e_harmonic_minor",
+                "gs_harmonic_minor",
                 "c_harmonic_major",
                 "e_harmonic_major",
-                "gs_harmonic_major",
-                "c_harmonic_minor",
-                "e_harmonic_minor",
-                "gs_harmonic_minor"
+                "gs_harmonic_major"
+                
             ],
             "pitch_classes": [
                 0,
