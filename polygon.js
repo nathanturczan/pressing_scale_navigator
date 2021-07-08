@@ -142,7 +142,7 @@ class Polygon {
         neighbor_size = !neighbor_size ? size / 2 : neighbor_size
 
         for (var n = 0; n < total_neigh; n++) {
-            var angle = 2 * PI * n / total_neigh + PI / 2
+            var angle = 2 * PI * -n / total_neigh + PI / 2
             neigh.push({
                 x: x + cos(angle) * offset_radius,
                 y: y + sin(angle) * offset_radius,
