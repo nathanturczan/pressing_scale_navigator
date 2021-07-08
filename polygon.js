@@ -24,6 +24,8 @@ class Polygon {
                 y: this.y
             }
         }
+
+        this.opacity = 1;
     }
 
     draw() {
@@ -39,22 +41,19 @@ class Polygon {
 
         // set the color
         if (this.data.scale_class == "whole_tone") {
-            fill(map(this.data.root % 2, 0, 1, 200, 150));
             fontcolor = map(this.data.root % 2, 0, 1, 200, 150);
         } else if (this.data.scale_class == "octatonic") {
-            fill(map(this.data.root % 3, 0, 2, 200, 133));
             fontcolor = map(this.data.root % 3, 0, 2, 200, 133);
         } else if (this.data.scale_class == "hexatonic") {
-            fill(map(this.data.root % 4, 0, 3, 200, 100));
             fontcolor = map(this.data.root % 4, 0, 3, 200, 100);
         } else {
-            fill(hsvToRgb(map((this.data.root * 7) % 12, 11, 0, 0, 1),
-                map((this.data.root * 7) % 12, 0, 11, 0.1, 0.5),
-                1));
             fontcolor = hsvToRgb(map((this.data.root * 7) % 12, 11, 0, 0, 1),
                 map((this.data.root * 7) % 12, 0, 11, 0.1, 0.5),
                 1);
         }
+
+        fontcolor.push(255 * this.opacity)
+        fill(fontcolor);
 
         // draw the polygon
         if (this.points_count == 12) {
@@ -104,7 +103,7 @@ class Polygon {
         endShape(CLOSE);
 
         //write the text
-        fill(80, 80, 80);
+        fill(80, 80, 80, 255 * this.opacity);
         var font_size_2 = this.radius / 3;
         var scale_class = this.data.scale_class.replace("_", "\n");
         textSize(font_size_2);
@@ -112,7 +111,6 @@ class Polygon {
 
         text(note_names[this.data.root], 0, -font_size_2 / 2);
         text(scale_class, 0, (scale_class.split("\n").length > 1 ? font_size_2 : font_size_2 / 2)); //print out scale class
-        fill(0);
         pop()
     }
 
@@ -130,10 +128,11 @@ class Polygon {
             this.x = lerp(this.animation.start.x, this.animation.target.x, progress)
             this.y = lerp(this.animation.start.y, this.animation.target.y, progress)
             this.radius = lerp(this.animation.start.size, this.animation.target.size, progress)
+            this.opacity = lerp(this.animation.start.opacity, this.animation.target.opacity, progress)
         }
     }
 
-    move(target_x, target_y, duration_seconds = 1, target_size = this.radius) {
+    move(target_x, target_y, duration_seconds = 1, target_size = this.radius, target_opacity) {
         var duration = fps * duration_seconds;
 
         this.animation = {
@@ -145,12 +144,14 @@ class Polygon {
             target: {
                 size: target_size,
                 x: target_x,
-                y: target_y
+                y: target_y,
+                opacity: target_opacity
             },
             start: {
                 size: this.radius,
                 x: this.x,
-                y: this.y
+                y: this.y,
+                opacity: this.opacity
             }
         }
     }
