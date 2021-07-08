@@ -1,3 +1,4 @@
-Switch direction
+X   Switch direction
 Show gen 3 on press down
 Get rid of duplicates in new and old neighbors
+X   Comment

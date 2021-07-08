@@ -34,6 +34,7 @@ class Polygon {
         push()
         this.animation_lerp()
 
+        // translate so we dont have to always write x and y
         translate(this.x, this.y)
 
         noStroke();
@@ -42,6 +43,8 @@ class Polygon {
         beginShape();
 
         // set the color
+        // we always have the color as an array of 3 numbers even if it's grey
+        // we need that cuz we also push in the opacity (alpha channel) 
         if (this.data.scale_class == "whole_tone") {
             fontcolor = Array(3).fill(map(this.data.root % 2, 0, 1, 200, 150));
         } else if (this.data.scale_class == "octatonic") {
@@ -54,10 +57,12 @@ class Polygon {
                 1);
         }
 
+        // add in the opacity
         fontcolor.push(255 * this.opacity)
         fill(fontcolor);
 
         // draw the polygon
+        // addaptation of your code to the object
         if (this.points_count == 12) {
             for (let a = 0; a < TWO_PI; a += angle) {
                 let sx = cos(a + (TWO_PI / 24)) * this.radius;
@@ -112,6 +117,7 @@ class Polygon {
         textAlign(CENTER, CENTER);
 
         text(note_names[this.data.root], 0, -font_size_2 / 2);
+        // the mess at the end of the line just checks if the text has 2 lines and then it offsets the text more if necessary
         text(scale_class, 0, (scale_class.split("\n").length > 1 ? font_size_2 : font_size_2 / 2)); //print out scale class
         pop()
     }
@@ -120,7 +126,8 @@ class Polygon {
         var total_neigh = this.data.adjacent_scales.length;
         var neigh = []
 
-        var positions = this.getNeighborPositions();
+        // use the getNeighborPositions to generate new objects for the neighbors of this object
+        var positions = this.getNeighborPositions(this.x, this.y, neighbor_size, offset_radius);
         for (var n = 0; n < total_neigh; n++) {
             neigh.push(
                 new Polygon(
@@ -136,6 +143,8 @@ class Polygon {
     }
 
     getNeighborPositions(x = this.x, y = this.y, size = this.radius, neighbor_size = undefined, offset_radius = undefined) {
+        // this function just radially generates the positions and sizes for the neighbors
+        // optional values can be passed in to generate positions for a state in which the object currently is not
         var total_neigh = this.data.adjacent_scales.length;
         var neigh = []
         offset_radius = !offset_radius ? size * 2.5 : offset_radius
@@ -154,13 +163,14 @@ class Polygon {
     }
 
     isMatching(other) {
+        // check if two objects are matching in type
         return other.name == this.name
     }
 
     animation_lerp() {
+        // lerp the animation of the object
         if (this.animation.active) {
             var progress = (frameCount - this.animation.start_frame) / (this.animation.end_frame - this.animation.start_frame);
-            //console.log(progress, this.animation.animation_curve(progress))
             progress = this.animation.animation_curve(progress);
 
             if (progress > 1) {
@@ -176,6 +186,7 @@ class Polygon {
     }
 
     move(target_x, target_y, duration_seconds = 1, target_size = this.radius, target_opacity = 1) {
+        // start the animation of an object
         var duration = fps * duration_seconds;
 
         this.animation = {
@@ -199,7 +210,8 @@ class Polygon {
         }
     }
 
-    click(x_in, y_in) {
+    click(x_in = mouseX, y_in = mouseY) {
+        // check if the object has been clicked
         return dist(x_in, y_in, this.x, this.y) < this.radius;
     }
 }

@@ -11,16 +11,16 @@ function setup() {
     renderer = createCanvas(window.innerWidth, window.innerHeight);
     frameRate(fps); //there are other ways to do timing, like setInterval()
 
+    // create the initial polygons
     main_polygon = new Polygon(width / 2, height / 2, 125, "c_diatonic")
     neighbors = main_polygon.getNeighbors();
-
-
 }
 
 function draw() {
     background(255);
     var allPolygons = neighbors.concat([main_polygon, old_main_polygon], old_neighbors)
 
+    //draw all the polygons
     for (var p of allPolygons) {
         if (p) p.draw();
     }
@@ -29,10 +29,11 @@ function draw() {
 function mouseReleased() {
     var allPolygons = neighbors.concat([main_polygon, old_main_polygon], old_neighbors)
 
+    // check for clicks on all polygons
     for (var p of allPolygons) {
-        if (p && p.click(mouseX, mouseY)) {
+        if (p && p.click()) {
             if (p == main_polygon) {
-
+                //ignore the click of the clicked polygon is the main polygon
             } else {
                 changeMainScale(p)
                 return
@@ -42,7 +43,7 @@ function mouseReleased() {
 }
 
 function changeMainScale(new_main, all_duration = 1) {
-
+    // push the current polygons into old polygons
     old_neighbors = [...neighbors]
     old_main_polygon = main_polygon;
 
@@ -57,10 +58,11 @@ function changeMainScale(new_main, all_duration = 1) {
         neighbors[index] = old_main_polygon;
     }
 
-    // Main polygons
+    // Main polygons animation
     main_polygon.move(width / 2, height / 2, all_duration, 125)
     old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
 
+    // Neighboring polygons animation
     for (var old of old_neighbors) {
         old.move(old.x, old.y, all_duration, 0, 0)
     }
