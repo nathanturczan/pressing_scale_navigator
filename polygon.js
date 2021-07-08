@@ -120,13 +120,13 @@ class Polygon {
         var total_neigh = this.data.adjacent_scales.length;
         var neigh = []
 
+        var positions = this.getNeighborPositions();
         for (var n = 0; n < total_neigh; n++) {
-            var angle = 2 * PI * n / total_neigh + PI / 2
             neigh.push(
                 new Polygon(
-                    this.x + cos(angle) * offset_radius,
-                    this.y + sin(angle) * offset_radius,
-                    neighbor_size,
+                    positions[n].x,
+                    positions[n].y,
+                    positions[n].size,
                     this.data.adjacent_scales[n]
                 )
             )
