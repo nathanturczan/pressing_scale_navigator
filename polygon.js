@@ -26,6 +26,8 @@ class Polygon {
         }
 
         this.opacity = 1;
+
+        this.name = `${note_names[this.data.root]} ${this.data.scale_class.replace("_", " ")}`;
     }
 
     draw() {
@@ -41,11 +43,11 @@ class Polygon {
 
         // set the color
         if (this.data.scale_class == "whole_tone") {
-            fontcolor = map(this.data.root % 2, 0, 1, 200, 150);
+            fontcolor = Array(3).fill(map(this.data.root % 2, 0, 1, 200, 150));
         } else if (this.data.scale_class == "octatonic") {
-            fontcolor = map(this.data.root % 3, 0, 2, 200, 133);
+            fontcolor = Array(3).fill(map(this.data.root % 3, 0, 2, 200, 133));
         } else if (this.data.scale_class == "hexatonic") {
-            fontcolor = map(this.data.root % 4, 0, 3, 200, 100);
+            fontcolor = Array(3).fill(map(this.data.root % 4, 0, 3, 200, 100));
         } else {
             fontcolor = hsvToRgb(map((this.data.root * 7) % 12, 11, 0, 0, 1),
                 map((this.data.root * 7) % 12, 0, 11, 0.1, 0.5),
@@ -114,6 +116,47 @@ class Polygon {
         pop()
     }
 
+    getNeighbors(neighbor_size = this.radius / 2, offset_radius = this.radius * 2.5) {
+        var total_neigh = this.data.adjacent_scales.length;
+        var neigh = []
+
+        for (var n = 0; n < total_neigh; n++) {
+            var angle = 2 * PI * n / total_neigh
+            neigh.push(
+                new Polygon(
+                    this.x + cos(angle) * offset_radius,
+                    this.y + sin(angle) * offset_radius,
+                    neighbor_size,
+                    this.data.adjacent_scales[n]
+                )
+            )
+        }
+
+        return neigh
+    }
+
+    getNeighborPositions(x = this.x, y = this.y, size = this.radius, neighbor_size = undefined, offset_radius = undefined) {
+        var total_neigh = this.data.adjacent_scales.length;
+        var neigh = []
+        offset_radius = !offset_radius ? size * 2.5 : offset_radius
+        neighbor_size = !neighbor_size ? size / 2 : neighbor_size
+
+        for (var n = 0; n < total_neigh; n++) {
+            var angle = 2 * PI * n / total_neigh
+            neigh.push({
+                x: x + cos(angle) * offset_radius,
+                y: y + sin(angle) * offset_radius,
+                size: neighbor_size
+            })
+        }
+
+        return neigh
+    }
+
+    isMatching(other) {
+        return other.name == this.name
+    }
+
     animation_lerp() {
         if (this.animation.active) {
             var progress = (frameCount - this.animation.start_frame) / (this.animation.end_frame - this.animation.start_frame);
@@ -132,7 +175,7 @@ class Polygon {
         }
     }
 
-    move(target_x, target_y, duration_seconds = 1, target_size = this.radius, target_opacity) {
+    move(target_x, target_y, duration_seconds = 1, target_size = this.radius, target_opacity = 1) {
         var duration = fps * duration_seconds;
 
         this.animation = {
@@ -154,5 +197,9 @@ class Polygon {
                 opacity: this.opacity
             }
         }
+    }
+
+    click(x_in, y_in) {
+        return dist(x_in, y_in, this.x, this.y) < this.radius;
     }
 }
