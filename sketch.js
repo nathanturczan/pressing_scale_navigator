@@ -21,7 +21,8 @@ function setup() {
 
 function draw() {
     background(255);
-    var allPolygons = neighbors.concat([main_polygon, old_main_polygon], old_neighbors, preview_polygons)
+    var allPolygons = neighbors.concat([main_polygon], old_neighbors, preview_polygons)
+    allPolygons.push(old_main_polygon)
 
     //draw all the polygons
     for (var p of allPolygons) {
@@ -106,17 +107,17 @@ function changeMainScale(new_main, all_duration = 1) {
 
     // Main polygons animation
     main_polygon.move(width / 2, height / 2, all_duration, global_size)
-    old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
-
-    // Neighboring polygons animation
-    for (var old of old_neighbors) {
-        old.move(old.x, old.y, all_duration, 0, 0)
-    }
+        //old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
 
     var positions = main_polygon.getNeighborPositions(width / 2, height / 2, global_size)
     for (var i = 0; i < neighbors.length; i++) {
         try {
             neighbors[i].move(positions[i].x, positions[i].y, all_duration, positions[i].size, 1)
         } catch (error) {}
+    }
+
+    // Neighboring polygons animation
+    for (var old of old_neighbors) {
+        old.move(old_main_polygon.animation.target.x, old_main_polygon.animation.target.y, all_duration, 0, 1)
     }
 }
