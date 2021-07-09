@@ -3,6 +3,7 @@ var main_polygon, neighbors = [];
 var old_main_polygon, old_neighbors;
 var preview_polygons = []
 var global_size = 125
+var preview_polygons_ready = false
 
 const fps = 30;
 const note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
@@ -31,7 +32,7 @@ function draw() {
 function mousePressed() {
     // check for clicks on all polygons
     for (var p of neighbors) {
-        if (p && p.click()) {
+        if (p && p.click() && !p.animation.active) {
             preview_polygons = p.getNeighbors()
 
             // duplicates between neighbors
@@ -58,7 +59,6 @@ function mousePressed() {
             // take care of the fanning out (not all the way around)
             var total_poly = neighbors.length;
             var ind = main_polygon.getNeighbors().findIndex(x => x.isMatching(p))
-            console.log(total_poly, ind)
             var positions = p.getNeighborPositions(p.x, p.y, p.radius, undefined, undefined, PI / 2 + (2 * PI * (ind - 0.5)) / total_poly, PI / 2 + (2 * PI * (ind + 0.5)) / total_poly, actually_new_polygons.length)
 
             //position them
@@ -67,6 +67,8 @@ function mousePressed() {
 
                 pol.set(["x", positions[a_n].x], ["y", positions[a_n].y], ["size", positions[a_n].size])
             }
+
+            preview_polygons_ready = true;
             return
         }
     }
@@ -75,13 +77,14 @@ function mousePressed() {
 function mouseReleased() {
     // check for clicks on all polygons
     for (var p of neighbors) {
-        if (p && p.click()) {
+        if (p && p.click() && !p.animation.active && preview_polygons_ready) {
             changeMainScale(p)
             return
         }
     }
 
     preview_polygons = []
+    preview_polygons_ready = false;
 }
 
 function changeMainScale(new_main, all_duration = 1) {

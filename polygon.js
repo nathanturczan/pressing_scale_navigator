@@ -217,6 +217,6 @@ class Polygon {
 
     click(x_in = mouseX, y_in = mouseY) {
         // check if the object has been clicked
-        return dist(x_in, y_in, this.x, this.y) < this.radius;
+        return (dist(x_in, y_in, this.x, this.y) < this.radius);
     }
 }
