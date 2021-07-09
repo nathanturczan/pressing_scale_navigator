@@ -98,7 +98,7 @@ function mouseReleased() {
     }
 
     for (var prev of actually_new_polygons) {
-        prev.move(last_clicked_polygon.x, last_clicked_polygon.y, 1, 0)
+        if (!prev.animation.active) prev.move(last_clicked_polygon.x, last_clicked_polygon.y, 1, 0)
     }
 
     //preview_polygons = []
