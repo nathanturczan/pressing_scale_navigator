@@ -127,7 +127,7 @@ class Polygon {
         var neigh = []
 
         // use the getNeighborPositions to generate new objects for the neighbors of this object
-        var positions = this.getNeighborPositions(this.x, this.y, neighbor_size, offset_radius);
+        var positions = this.getNeighborPositions(this.x, this.y, this.size, neighbor_size, offset_radius);
         for (var n = 0; n < total_neigh; n++) {
             neigh.push(
                 new Polygon(

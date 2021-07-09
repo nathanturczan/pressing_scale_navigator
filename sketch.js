@@ -53,9 +53,19 @@ function changeMainScale(new_main, all_duration = 1) {
     //Handle duplicates
     old_neighbors.splice(old_neighbors.indexOf(main_polygon), 1)
 
+    // duplicate of main polygon
     var index = neighbors.findIndex((x) => { return old_main_polygon.isMatching(x) });
     if (index !== -1) {
         neighbors[index] = old_main_polygon;
+    }
+
+    // duplicates between neighbors
+    for (var n = 0; n < neighbors.length; n++) {
+        for (var old of old_neighbors) {
+            if (neighbors[n].isMatching(old)) {
+                neighbors[n] = old;
+            }
+        }
     }
 
     // Main polygons animation
