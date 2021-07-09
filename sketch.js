@@ -1,6 +1,7 @@
 var renderer;
 var main_polygon, neighbors = [];
 var old_main_polygon, old_neighbors;
+var last_clicked_polygon, actually_new_polygons;
 var preview_polygons = []
 var global_size = 125
 var preview_polygons_ready = false
@@ -36,10 +37,11 @@ function mousePressed() {
     for (var p of neighbors) {
         if (p && p.click() && !p.animation.active) {
             preview_polygons = p.getNeighbors()
+            last_clicked_polygon = p;
 
             // duplicates between neighbors
             var all_current = neighbors.concat([main_polygon])
-            var actually_new_polygons = new Set();
+            actually_new_polygons = new Set();
             for (var n = 0; n < all_current.length; n++) {
                 for (var pre = 0; pre < preview_polygons.length; pre++) {
                     if (all_current[n].isMatching(preview_polygons[pre])) {
@@ -95,7 +97,11 @@ function mouseReleased() {
         }
     }
 
-    preview_polygons = []
+    for (var prev of actually_new_polygons) {
+        prev.move(last_clicked_polygon.x, last_clicked_polygon.y, 1, 0)
+    }
+
+    //preview_polygons = []
     preview_polygons_ready = false;
 }
 
@@ -117,8 +123,8 @@ function changeMainScale(new_main, all_duration = 1) {
     }
 
     // Main polygons animation
-    main_polygon.move(width / 2, height / 2, all_duration, global_size)
-        //old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
+    main_polygon.move(width / 2, height / 2, all_duration, global_size);
+    //old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
 
     var positions = main_polygon.getNeighborPositions(width / 2, height / 2, global_size)
     for (var i = 0; i < neighbors.length; i++) {
@@ -129,6 +135,8 @@ function changeMainScale(new_main, all_duration = 1) {
 
     // Neighboring polygons animation
     for (var old of old_neighbors) {
-        old.move(old_main_polygon.animation.target.x, old_main_polygon.animation.target.y, all_duration, 0, 1)
+        if (neighbors.findIndex(x => old.isMatching(x)) == -1) {
+            old.move(old_main_polygon.animation.target.x, old_main_polygon.animation.target.y, all_duration, 0, 1)
+        }
     }
 }
