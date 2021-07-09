@@ -122,12 +122,12 @@ class Polygon {
         pop()
     }
 
-    getNeighbors(neighbor_size = this.radius / 2, offset_radius = this.radius * 2.5) {
+    getNeighbors(neighbor_size = this.radius / 2, offset_radius = this.radius * 2.5, start_angle = PI / 2, end_angle = 5 / 2 * PI) {
         var total_neigh = this.data.adjacent_scales.length;
         var neigh = []
 
         // use the getNeighborPositions to generate new objects for the neighbors of this object
-        var positions = this.getNeighborPositions(this.x, this.y, this.size, neighbor_size, offset_radius);
+        var positions = this.getNeighborPositions(this.x, this.y, this.size, neighbor_size, offset_radius, start_angle, end_angle);
         for (var n = 0; n < total_neigh; n++) {
             neigh.push(
                 new Polygon(
@@ -142,16 +142,15 @@ class Polygon {
         return neigh
     }
 
-    getNeighborPositions(x = this.x, y = this.y, size = this.radius, neighbor_size = undefined, offset_radius = undefined) {
+    getNeighborPositions(x = this.x, y = this.y, size = this.radius, neighbor_size = undefined, offset_radius = undefined, start_angle = PI / 2, end_angle = 5 / 2 * PI, total_neigh = this.data.adjacent_scales.length) {
         // this function just radially generates the positions and sizes for the neighbors
         // optional values can be passed in to generate positions for a state in which the object currently is not
-        var total_neigh = this.data.adjacent_scales.length;
         var neigh = []
         offset_radius = !offset_radius ? size * 2.5 : offset_radius
         neighbor_size = !neighbor_size ? size / 2 : neighbor_size
 
         for (var n = 0; n < total_neigh; n++) {
-            var angle = 2 * PI * -n / total_neigh + PI / 2
+            var angle = (start_angle - end_angle) * -n / total_neigh + start_angle
             neigh.push({
                 x: x + cos(angle) * offset_radius,
                 y: y + sin(angle) * offset_radius,
@@ -207,6 +206,12 @@ class Polygon {
                 y: this.y,
                 opacity: this.opacity
             }
+        }
+    }
+
+    set(...[]) {
+        for (var i = 0; i < arguments.length; i++) {
+            this[arguments[i][0]] = arguments[i][1]
         }
     }
 

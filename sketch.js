@@ -1,6 +1,8 @@
 var renderer;
 var main_polygon, neighbors = [];
 var old_main_polygon, old_neighbors;
+var preview_polygons = []
+var global_size = 125
 
 const fps = 30;
 const note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
@@ -12,13 +14,13 @@ function setup() {
     frameRate(fps); //there are other ways to do timing, like setInterval()
 
     // create the initial polygons
-    main_polygon = new Polygon(width / 2, height / 2, 125, "c_diatonic")
+    main_polygon = new Polygon(width / 2, height / 2, global_size, "c_diatonic")
     neighbors = main_polygon.getNeighbors();
 }
 
 function draw() {
     background(255);
-    var allPolygons = neighbors.concat([main_polygon, old_main_polygon], old_neighbors)
+    var allPolygons = neighbors.concat([main_polygon, old_main_polygon], old_neighbors, preview_polygons)
 
     //draw all the polygons
     for (var p of allPolygons) {
@@ -26,20 +28,60 @@ function draw() {
     }
 }
 
-function mouseReleased() {
-    var allPolygons = neighbors.concat([main_polygon, old_main_polygon], old_neighbors)
-
+function mousePressed() {
     // check for clicks on all polygons
-    for (var p of allPolygons) {
+    for (var p of neighbors) {
         if (p && p.click()) {
-            if (p == main_polygon) {
-                //ignore the click of the clicked polygon is the main polygon
-            } else {
-                changeMainScale(p)
-                return
+            preview_polygons = p.getNeighbors()
+
+            // duplicates between neighbors
+            var all_current = neighbors.concat([main_polygon])
+            var actually_new_polygons = new Set();
+            for (var n = 0; n < all_current.length; n++) {
+                for (var pre = 0; pre < preview_polygons.length; pre++) {
+                    if (all_current[n].isMatching(preview_polygons[pre])) {
+                        preview_polygons[pre] = all_current[n];
+                    }
+                }
             }
+
+            // find polygons which are actually new
+            for (var pre = 0; pre < preview_polygons.length; pre++) {
+                if (!all_current.includes(preview_polygons[pre])) {
+                    actually_new_polygons.add(preview_polygons[pre])
+                }
+            }
+
+            // convert to array
+            actually_new_polygons = Array.from(actually_new_polygons)
+
+            // take care of the fanning out (not all the way around)
+            var total_poly = neighbors.length;
+            var ind = main_polygon.getNeighbors().findIndex(x => x.isMatching(p))
+            console.log(total_poly, ind)
+            var positions = p.getNeighborPositions(p.x, p.y, p.radius, undefined, undefined, PI / 2 + (2 * PI * (ind - 0.5)) / total_poly, PI / 2 + (2 * PI * (ind + 0.5)) / total_poly, actually_new_polygons.length)
+
+            //position them
+            for (var a_n = 0; a_n < actually_new_polygons.length; a_n++) {
+                var pol = preview_polygons.find(x => actually_new_polygons[a_n].isMatching(x))
+
+                pol.set(["x", positions[a_n].x], ["y", positions[a_n].y], ["size", positions[a_n].size])
+            }
+            return
         }
     }
+}
+
+function mouseReleased() {
+    // check for clicks on all polygons
+    for (var p of neighbors) {
+        if (p && p.click()) {
+            changeMainScale(p)
+            return
+        }
+    }
+
+    preview_polygons = []
 }
 
 function changeMainScale(new_main, all_duration = 1) {
@@ -48,7 +90,7 @@ function changeMainScale(new_main, all_duration = 1) {
     old_main_polygon = main_polygon;
 
     main_polygon = new_main
-    neighbors = main_polygon.getNeighbors();
+    neighbors = preview_polygons;
 
     //Handle duplicates
     old_neighbors.splice(old_neighbors.indexOf(main_polygon), 1)
@@ -59,17 +101,8 @@ function changeMainScale(new_main, all_duration = 1) {
         neighbors[index] = old_main_polygon;
     }
 
-    // duplicates between neighbors
-    for (var n = 0; n < neighbors.length; n++) {
-        for (var old of old_neighbors) {
-            if (neighbors[n].isMatching(old)) {
-                neighbors[n] = old;
-            }
-        }
-    }
-
     // Main polygons animation
-    main_polygon.move(width / 2, height / 2, all_duration, 125)
+    main_polygon.move(width / 2, height / 2, all_duration, global_size)
     old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
 
     // Neighboring polygons animation
@@ -77,7 +110,7 @@ function changeMainScale(new_main, all_duration = 1) {
         old.move(old.x, old.y, all_duration, 0, 0)
     }
 
-    var positions = main_polygon.getNeighborPositions(width / 2, height / 2, 125)
+    var positions = main_polygon.getNeighborPositions(width / 2, height / 2, global_size)
     for (var i = 0; i < neighbors.length; i++) {
         try {
             neighbors[i].move(positions[i].x, positions[i].y, all_duration, positions[i].size, 1)
