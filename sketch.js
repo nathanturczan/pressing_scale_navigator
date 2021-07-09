@@ -21,7 +21,8 @@ function setup() {
 
 function draw() {
     background(255);
-    var allPolygons = neighbors.concat([main_polygon], old_neighbors, preview_polygons)
+    var allPolygons = [main_polygon].concat(preview_polygons, old_neighbors)
+    allPolygons.push(...neighbors)
     allPolygons.push(old_main_polygon)
 
     //draw all the polygons
@@ -60,13 +61,23 @@ function mousePressed() {
             // take care of the fanning out (not all the way around)
             var total_poly = neighbors.length;
             var ind = main_polygon.getNeighbors().findIndex(x => x.isMatching(p))
-            var positions = p.getNeighborPositions(p.x, p.y, p.radius, undefined, undefined, PI / 2 + (2 * PI * (ind - 0.5)) / total_poly, PI / 2 + (2 * PI * (ind + 0.5)) / total_poly, actually_new_polygons.length)
+                //var positions = p.getNeighborPositions(p.x, p.y, p.radius, undefined, undefined, PI / 2 + (2 * PI * (ind - 0.5)) / total_poly, PI / 2 + (2 * PI * (ind + 0.5)) / total_poly, actually_new_polygons.length)
+            var positions = p.getNeighborPositions(p.x, p.y, p.radius, undefined, undefined, PI / 2, PI / 2 + (2 * PI), actually_new_polygons.length)
 
+            /*
             //position them
             for (var a_n = 0; a_n < actually_new_polygons.length; a_n++) {
                 var pol = preview_polygons.find(x => actually_new_polygons[a_n].isMatching(x))
 
                 pol.set(["x", positions[a_n].x], ["y", positions[a_n].y], ["size", positions[a_n].size])
+            }*/
+
+            for (var prev of actually_new_polygons) {
+                var oldx = prev.x;
+                var oldy = prev.y;
+
+                prev.set(["x", p.x], ["y", p.y])
+                prev.move(oldx, oldy, prev.size)
             }
 
             preview_polygons_ready = true;
