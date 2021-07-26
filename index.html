@@ -11,10 +11,8 @@
             margin: 0;
         }
     </style>
-
     <!-- use jquery for websockets
     websockets io goes here -->
-
     <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
     <script language="javascript" src="libraries/p5.dom.js"></script>
     <!-- <script language="javascript" src="libraries/p5.sound.js"></script> -->
@@ -24,7 +22,6 @@
     <script src="helper.js"></script>
     <script src="main_navigator.js"></script>
     <script language="javascript" type="text/javascript" src="sketch.js"></script>
-
     <style>
         body {
             margin: 0;
@@ -34,10 +31,6 @@
             overflow: hidden;
         }
         
-        input[type=checkbox] {
-            z-index: 100;
-            transform: scale(3);
-        }
         
         #output_port_selector {
             z-index: 100;
@@ -51,7 +44,9 @@
 </head>
 
 <body>
-
+    <form>
+        <input type="checkbox" id="autopilot_checkbox" style="transform: scale(2); z-index: 100; position:fixed;"> autopilot</input>
+    </form>
 </body>
 
 </html>
