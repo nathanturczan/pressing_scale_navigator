@@ -35,7 +35,7 @@ class Polygon {
         this.animation_lerp()
 
         // translate so we dont have to always write x and y
-        translate(this.x, this.y)
+        translate(this.x * width, this.y * height)
 
         noStroke();
         var angle = TWO_PI / this.points_count;
@@ -152,8 +152,8 @@ class Polygon {
         for (var n = 0; n < total_neigh; n++) {
             var angle = (start_angle - end_angle) * -n / total_neigh + start_angle
             neigh.push({
-                x: x + cos(angle) * offset_radius,
-                y: y + sin(angle) * offset_radius,
+                x: x + cos(angle) * offset_radius / width,
+                y: y + sin(angle) * offset_radius / height,
                 size: neighbor_size
             })
         }
@@ -217,6 +217,6 @@ class Polygon {
 
     click(x_in = mouseX, y_in = mouseY) {
         // check if the object has been clicked
-        return (dist(x_in, y_in, this.x, this.y) < this.radius);
+        return (dist(x_in, y_in, this.x * width, this.y * height) < this.radius);
     }
 }

@@ -8,11 +8,11 @@ class Navigator {
         this.old_neighbors;
         this.last_clicked_polygon, this.actually_new_polygons;
         this.preview_polygons = []
-        this.poly_size = 125
+        this.poly_size = 75
         this.preview_polygons_ready = false
 
         // create the initial polygons
-        this.main_polygon = new Polygon(width / 2, height / 2, this.poly_size, "c_diatonic")
+        this.main_polygon = new Polygon(0.5, 0.5, this.poly_size, "c_diatonic")
         this.neighbors = this.main_polygon.getNeighbors();
 
         this.autopilot_data = {
@@ -166,10 +166,10 @@ class Navigator {
         }
 
         // Main polygons animation
-        this.main_polygon.move(width / 2, height / 2, all_duration, this.poly_size);
+        this.main_polygon.move(0.5, 0.5, all_duration, this.poly_size);
         //this.old_main_polygon.move(width / 2, height / 2, all_duration, 0, 0)
 
-        var positions = this.main_polygon.getNeighborPositions(width / 2, height / 2, this.poly_size)
+        var positions = this.main_polygon.getNeighborPositions(0.5, 0.5, this.poly_size)
         for (var i = 0; i < this.neighbors.length; i++) {
             try {
                 this.neighbors[i].move(positions[i].x, positions[i].y, all_duration, positions[i].size, 1)

@@ -4,7 +4,8 @@ const note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", 
 var nav;
 
 function setup() {
-    renderer = createCanvas(window.innerWidth, window.innerHeight);
+    renderer = createCanvas(window.innerWidth / 2.5, window.innerHeight * 0.85);
+    renderer.parent("canvCont")
     frameRate(fps); //there are other ways to do timing, like setInterval()
 
     nav = new Navigator();
@@ -22,4 +23,8 @@ function mousePressed() {
 
 function mouseReleased() {
     nav.mouseReleased();
+}
+
+function windowResized() {
+    resizeCanvas(window.innerWidth / 3, window.innerHeight)
 }
