@@ -11,13 +11,17 @@
             margin: 0;
         }
     </style>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
     <!-- use jquery for websockets
-    websockets io goes here -->
+                websockets io goes here -->
     <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
     <script language="javascript" src="libraries/p5.dom.js"></script>
     <!-- <script language="javascript" src="libraries/p5.sound.js"></script> -->
     </script>
     <script language="javascript" type="text/javascript" src="data.js"></script>
+    <script src="tablature.js"></script>
     <script src="polygon.js"></script>
     <script src="helper.js"></script>
     <script src="main_navigator.js"></script>
@@ -53,9 +57,34 @@
                 <input type="checkbox" id="autopilot_checkbox" style="transform: scale(2); z-index: 100; position:fixed;margin-left: 15px;" onclick="nav.toggle_autopilot()"></input>
             </form>
         </div>
-        <div id="tablature" style="overflow-y: scroll;">
+        <div id="tablature" style="overflow-y: auto; width:-moz-available; height: max-content; max-height: 100vh;">
             <h1>Tablature</h1>
             <div id="Tablature" class="tabcontent">
+                <style>
+                    .close {
+                        position: absolute;
+                        font-size: x-large;
+                        right: 15px;
+                        top: 7.5px;
+                        width: 32px;
+                        height: 32px;
+                        opacity: 0.3;
+                        background-color: 255, 255, 255;
+                    }
+                    
+                    .close:hover {
+                        opacity: 1;
+                    }
+                    
+                    .close:before,
+                    .close:after {
+                        position: absolute;
+                        left: 15px;
+                        content: ' ';
+                        height: 33px;
+                        width: 2px;
+                    }
+                </style>
                 <div class="selectbox_container">
                     <form action="" method="post">
                         <select id='select_instrument'>

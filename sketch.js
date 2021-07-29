@@ -26,5 +26,5 @@ function mouseReleased() {
 }
 
 function windowResized() {
-    resizeCanvas(window.innerWidth / 3, window.innerHeight)
+    resizeCanvas(window.innerWidth / 2.5, window.innerHeight * 0.85)
 }

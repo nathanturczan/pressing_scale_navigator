@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="218" height="66">
+  
+  
+  <circle id="key-b" cx="10" cy="30" r="8" fill="black" stroke="black"/>
+  <circle id="key-a" cx="50" cy="30" r="10" fill="black" stroke="black"/>
+  <circle id="key-g" cx="80" cy="30" r="10" fill="black" stroke="black"/>
+  <circle id="key-f" cx="130" cy="30" r="10" fill="black" stroke="black"/>
+  <circle id="key-e" cx="160" cy="30" r="10" fill="black" stroke="black"/>
+  <circle id="key-d" cx="190" cy="30" r="10" fill="red" stroke="black"/>
+
+  <path id="key-bflat" d="M 5 45 L 45 45 C 47 46, 47 47, 45 48 L 18 48 C 17 69, 4 69, 5 45" fill="white" stroke="black"/>
+  <path id="key-c" d="M 20 50 L 44 50 C 45 68, 17 68, 20 50" fill="black" stroke="black"/>
+
+  <path id="key-gsharp" d="M 80 10 C 95 14, 98 26, 100 30 L 92 10 C 90 5, 88 3, 88 3 C 82 0, 76 5, 80 10" fill="white" stroke="black"/>
+
+  <path id="key-bflat-lever" d="M 105 45 L 115 45 C 115 35, 122 35, 122 45 L 122 48 L 105 48 C 100 48, 100 45, 105 45" fill="white" stroke="black"/>
+
+  <path id="key-trill-1" d="M 142 48 L 148 48 C 152 35, 138 35, 142 48" fill="white" stroke="black"/>
+
+  <path id="key-trill-2" d="M 172 48 L 178 48 C 182 35, 168 35, 172 48" fill="white" stroke="black"/>
+
+  <path id="key-eflat" d="M 205 30 C 208 36, 192 45, 205 48 C 222 45, 212 36, 210 30 C 209 26, 206 26, 205 30" fill="white" stroke="black"/>
+
+
+
+</svg>
