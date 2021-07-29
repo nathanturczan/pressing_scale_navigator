@@ -1,0 +1,47 @@
+
+
+.piano {
+  
+  display: flex;
+  justify-content: center;
+
+
+}
+.piano .key {
+  height: 200px;
+  border: 2px solid #353b48;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.piano .key span.key-value {
+  font-size: 16px;
+  display: none;
+}
+.piano .white {
+  background-color: white;
+  width: 50px;
+  border-radius: 3px;
+}
+.piano .white:active {
+  background: #3FEEE6;
+}
+.piano .black {
+  background-color: white;
+  height: 116.666px;
+  width: 29.166px;
+  margin-left: -17px;
+  margin-right: -17px;
+  z-index: 2;
+  border-radius: 0 0 3px 3px;
+}
+.piano .black:active {
+  background: #3FEEE6;
+}
+.piano .black-active {
+  background: #FC4445;
+}
+.piano .white-active {
+  background: #FC4445;
+}
