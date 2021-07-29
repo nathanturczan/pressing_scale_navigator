@@ -1,7 +1,7 @@
 const fps = 30;
 const note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
-var nav;
+var nav, tab;
 
 function setup() {
     renderer = createCanvas(window.innerWidth / 2.5, window.innerHeight * 0.85);
@@ -9,6 +9,10 @@ function setup() {
     frameRate(fps); //there are other ways to do timing, like setInterval()
 
     nav = new Navigator();
+    tab = new TablatureManager();
+
+    document.addEventListener("scaleChanged", (e) => { tab.setScale(e.detail) })
+    nav.init();
 }
 
 function draw() {

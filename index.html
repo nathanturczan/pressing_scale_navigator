@@ -34,7 +34,7 @@
     <script src="tablature.js"></script>
     <script src="polygon.js"></script>
     <script src="helper.js"></script>
-    <script src="main_navigator.js"></script>
+    <script src="navigator.js"></script>
     <script language="javascript" type="text/javascript" src="sketch.js"></script>
     <style>
         body {
@@ -53,6 +53,14 @@
             width: 200px;
             height: 50px;
         }
+        
+        #Tablature div {
+            padding: 10px;
+        }
+        
+        #grid div {
+            padding: 0px 5px;
+        }
     </style>
 </head>
 
@@ -64,7 +72,7 @@
             <div id="canvCont"></div>
             <form id="autopilot">
                 <label>Autopilot</label>
-                <input type="checkbox" id="autopilot_checkbox" style="transform: scale(2); z-index: 100; position:fixed;margin-left: 15px;" onclick="nav.toggle_autopilot()"></input>
+                <input type="checkbox" autocomplete="off" id="autopilot_checkbox" style="transform: scale(2); z-index: 100; position:fixed;margin-left: 15px;" onclick="nav.toggle_autopilot()"></input>
             </form>
         </div>
         <div id="tablature" style="overflow-y: auto; width:-moz-available; height: max-content; max-height: 100vh;">
@@ -94,15 +102,11 @@
                         height: 33px;
                         width: 2px;
                     }
-                    
-                    #Tablature div {
-                        padding: 10px;
-                    }
                 </style>
                 <div class="selectbox_container">
                     <form action="" method="post">
-                        <select id='select_instrument'>
-                         <option value="" disabled selected>select interface</option>
+                        <select id='select_instrument' autocomplete="off" onclick="this.selectedIndex = 0;">
+                         <option value="-1" disabled selected>select interface</option>
                          <optgroup label="fretted intstrument tablature">
                             <option value="0">mandolin</option>
                             <option value="1">guitar</option>

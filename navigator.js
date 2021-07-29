@@ -25,6 +25,10 @@ class Navigator {
         this.init_autopilot()
     }
 
+    init() {
+        this.triggerEvent()
+    }
+
     init_autopilot() {
         if (!this.autopilot_data.period) this.autopilot_data.period = this.autopilot_data.default_period
 
@@ -191,10 +195,16 @@ class Navigator {
 
         //this.preview_polygons = []
         this.preview_polygons_ready = false;
+
+        this.triggerEvent();
     }
 
     changeMainScale(new_main, all_duration = 1) {
         this.prepareChangeMainScale(new_main)
         this.finishChangeMainScale(new_main, all_duration)
+    }
+
+    triggerEvent() {
+        document.dispatchEvent(new CustomEvent("scaleChanged", { detail: this.main_polygon.scale }))
     }
 }

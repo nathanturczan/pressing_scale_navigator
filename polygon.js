@@ -27,6 +27,7 @@ class Polygon {
 
         this.opacity = 1;
 
+        this.scale = scale;
         this.name = `${note_names[this.data.root]} ${this.data.scale_class.replace("_", " ")}`;
     }
 
